@@ -2,7 +2,6 @@ package config;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -10,25 +9,38 @@ import org.junit.BeforeClass;
 
 public class TestConfig {
 
+    public static RequestSpecification videoGame_requestSpec;
+    public static RequestSpecification football_requestSpec;
+    public static ResponseSpecification responseSpec;
+
     @BeforeClass
     public static void setup() {
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 8080;
-        RestAssured.basePath = "/app/";
-
         RestAssured.proxy("localhost", 8888);
 
-        RequestSpecification requestSpecification = new RequestSpecBuilder().
+        videoGame_requestSpec = new RequestSpecBuilder().
+                setBaseUri("http://localhost").
+                setPort(8080).
+                setBasePath("/app").
                 addHeader("Content-Type", "application/json").
                 addHeader("Accept", "application/json").
                 build();
 
-        RestAssured.requestSpecification = requestSpecification;
+        // RestAssured.requestSpecification = videoGame_requestSpec; //delete this line if not in use
 
-        ResponseSpecification responseSpecification = new ResponseSpecBuilder().
+        football_requestSpec = new RequestSpecBuilder().
+                setBaseUri("http://api.footballl.data.org").
+                setBasePath("/v1/").
+                addHeader("X-Auth-Token", "fae8b099875d41f395c58dbb7f35556b").
+                addHeader("X-Response-Control", "minified").
+                build();
+
+
+
+        responseSpec = new ResponseSpecBuilder().
                 expectStatusCode(200).
                 build();
 
-        RestAssured.responseSpecification = responseSpecification;
+        // RestAssured.responseSpecification = responseSpec; delete the line if you don't use it
+
     }
 }
