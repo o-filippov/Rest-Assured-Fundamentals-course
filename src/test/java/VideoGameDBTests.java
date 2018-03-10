@@ -2,7 +2,7 @@ import config.EndPoint;
 import config.TestConfig;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 public class VideoGameDBTests extends TestConfig {
 
@@ -10,8 +10,8 @@ public class VideoGameDBTests extends TestConfig {
     public void getAllGames() {
 
         given().
-               when().get(EndPoint.VIDEOGAMES).
-               then();
+                when().get(EndPoint.VIDEOGAMES).
+                then();
     }
 
     @Test
@@ -28,9 +28,9 @@ public class VideoGameDBTests extends TestConfig {
 
         given().log().all().
                 body(gameBodyJson).
-        when().
+                when().
                 post(EndPoint.VIDEOGAMES).
-        then();
+                then();
 
     }
 
@@ -60,7 +60,7 @@ public class VideoGameDBTests extends TestConfig {
                 "  \"releaseDate\": \"2018-03-10T08:44:57.567Z\",\n" +
                 "  \"reviewScore\": 51,\n" +
                 "  \"category\": \"Driving\",\n" +
-                "  \"rating\": \"Muture\"\n" +
+                "  \"rating\": \"Mature\"\n" +
                 "}";
 
         given().
@@ -68,6 +68,22 @@ public class VideoGameDBTests extends TestConfig {
                 when().
                 put("/videogames/11").
                 then();
+    }
+
+    @Test
+    public void deleteVideoGame() {
+        given().
+                when().
+                delete("/videogames/11").
+                then();
+    }
+
+    @Test
+    public void getSingleGame() {
+        given().
+                pathParam("videoGameId", 5).
+                when().
+                get("/videogames/{videogameId}");
     }
 
 }
