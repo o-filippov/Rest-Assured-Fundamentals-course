@@ -51,4 +51,23 @@ public class VideoGameDBTests extends TestConfig {
                 then();
     }
 
+    @Test
+    public void updateVideoGame() {
+
+        String bodyForUpdateJson = "{\n" +
+                "  \"id\": 11,\n" +
+                "  \"name\": \"MyUpdatedGame\",\n" +
+                "  \"releaseDate\": \"2018-03-10T08:44:57.567Z\",\n" +
+                "  \"reviewScore\": 51,\n" +
+                "  \"category\": \"Driving\",\n" +
+                "  \"rating\": \"Muture\"\n" +
+                "}";
+
+        given().
+                body(bodyForUpdateJson).
+                when().
+                put("/videogames/11").
+                then();
+    }
+
 }
