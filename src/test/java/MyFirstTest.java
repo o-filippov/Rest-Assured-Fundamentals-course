@@ -1,3 +1,4 @@
+import config.EndPoint;
 import config.TestConfig;
 import org.junit.Test;
 
@@ -14,6 +15,12 @@ public class MyFirstTest extends TestConfig {
         then().
                 log().
                 all();
+    }
+
+    @Test
+    public void getAllGames() {
+        given().
+        when().get(EndPoint.VIDEOGAMES);
     }
 
 }
