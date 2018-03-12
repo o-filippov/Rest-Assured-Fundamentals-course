@@ -83,7 +83,7 @@ public class VideoGameDBTests extends TestConfig {
         given().
                 pathParam("videoGameId", 5).
                 when().
-                get("/videogames/{videogameId}");
+                get(EndPoint.SINGLE_VIDEOGAME);
     }
 
 }

@@ -28,12 +28,11 @@ public class TestConfig {
         RestAssured.requestSpecification = videoGame_requestSpec; //delete this line if not in use
 
         football_requestSpec = new RequestSpecBuilder().
-                setBaseUri("http://api.footballl.data.org").
+                setBaseUri("http://api.football-data.org").
                 setBasePath("/v1/").
-                addHeader("X-Auth-Token", "fae8b099875d41f395c58dbb7f35556b").
+                addHeader("X-Auth-Token", "3e634ca011e74cf2bc9b9bc210e3454d").
                 addHeader("X-Response-Control", "minified").
                 build();
-
 
 
         responseSpec = new ResponseSpecBuilder().
