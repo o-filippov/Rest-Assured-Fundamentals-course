@@ -86,4 +86,15 @@ public class VideoGameDBTests extends TestConfig {
                 get(EndPoint.SINGLE_VIDEOGAME);
     }
 
+    @Test
+    public void testVideoGameSerialisationByJSON() {
+        VideoGame videoGame = new VideoGame("15", "shooter", "2014-06-03", "Halo 34", "Mature", "89");
+
+        given().log().all().
+                body(videoGame).
+                when().
+                post(EndPoint.VIDEOGAMES).
+                then();
+    }
+
 }

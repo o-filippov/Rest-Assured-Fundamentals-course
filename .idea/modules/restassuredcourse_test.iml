@@ -46,6 +46,7 @@
     <orderEntry type="library" name="Gradle: com.github.fge:msg-simple:1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.2.3" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.2.3" level="project" />
+    <orderEntry type="module" module-name="restassuredcourse_main" scope="TEST" />
   </component>
   <component name="TestModuleProperties" production-module="restassuredcourse_main" />
 </module>
