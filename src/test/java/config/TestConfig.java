@@ -23,11 +23,9 @@ public class TestConfig {
                 setBaseUri("http://localhost").
                 setPort(8080).
                 setBasePath("/app/").
-                addHeader("Content-Type", "application/json").
-                addHeader("Accept", "application/json").
+                addHeader("Content-Type", "application/xml").
+                addHeader("Accept", "application/xml").
                 build();
-
-        RestAssured.requestSpecification = videoGame_requestSpec; //delete this line if not in use
 
         football_requestSpec = new RequestSpecBuilder().
                 setBaseUri("http://api.football-data.org").
@@ -36,10 +34,11 @@ public class TestConfig {
                 addHeader("X-Response-Control", "minified").
                 build();
 
+        RestAssured.requestSpecification = videoGame_requestSpec; //delete this line if not in use
 
         responseSpec = new ResponseSpecBuilder().
                 expectStatusCode(200).
-                expectResponseTime(lessThan(3000L)).
+                expectResponseTime(lessThan(5000L)).
                 build();
 
         RestAssured.responseSpecification = responseSpec; //delete the line if you don't use it
